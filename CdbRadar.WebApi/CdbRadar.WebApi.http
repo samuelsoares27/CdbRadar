@@ -1,0 +1,6 @@
+@CdbRadar.WebApi_HostAddress = http://localhost:5117
+
+GET {{CdbRadar.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

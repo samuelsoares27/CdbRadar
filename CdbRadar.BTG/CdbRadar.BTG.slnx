@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="../CdbRadar.Application/CdbRadar.Application.csproj" Id="0ce95392-3bfe-450a-8494-cab9693be0dd" />
+  <Project Path="../CdbRadar.Domain/CdbRadar.Domain.csproj" />
+  <Project Path="../CdbRadar.Repository/CdbRadar.Repository.csproj" />
+  <Project Path="../CdbRadar.Utils/CdbRadar.Utils.csproj" />
+  <Project Path="../CdbRadar.WebApi/CdbRadar.WebApi.csproj" />
+  <Project Path="CdbRadar.BTG.csproj" />
+</Solution>
