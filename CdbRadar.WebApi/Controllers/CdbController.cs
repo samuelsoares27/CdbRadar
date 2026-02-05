@@ -1,21 +1,15 @@
 ﻿using CdbRadar.Application.Abstractions;
 using CdbRadar.Application.DTOs;
+using CdbRadar.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CdbRadar.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CdbController : ControllerBase
+    public class CdbController(IOfertaUseCase useCase) : ControllerBase
     {
-        private readonly IOfertaUseCase _useCase;
-
-        public CdbController(IOfertaUseCase useCase)
-        {
-            _useCase = useCase;
-        }
+        private readonly IOfertaUseCase _useCase = useCase;
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CdbOfertasDto dto)
@@ -59,6 +53,18 @@ namespace CdbRadar.WebApi.Controllers
             var ok = await _useCase.DeletarAsync(id);
 
             return ok ? NoContent() : NotFound();
+        }
+
+        [HttpGet("ListarAsync")]
+        public async Task<ActionResult<IEnumerable<CdbOfertasDto>>> ListarAsync(
+            [FromQuery] CdbOfertasFiltro filtro)
+        {
+            var cdbOfertasDto = await _useCase.ListarAsync(filtro);
+
+            if (cdbOfertasDto == null || !cdbOfertasDto.Any())
+                return NoContent();
+
+            return Ok(cdbOfertasDto);
         }
 
     }

@@ -10,5 +10,6 @@ namespace CdbRadar.Application.Abstractions
         public Task<CdbOfertas?> ObterPorIdAsync(int id);
         public Task<bool> AtualizarAsync(int id, CdbOfertasDto oferta);
         public Task<bool> DeletarAsync(int id);
+        Task<List<CdbOfertas>> ListarAsync(CdbOfertasFiltro filtro);
     }
 }

@@ -51,5 +51,11 @@ namespace CdbRadar.Application.UseCases
             await _repositorio.InserirAsync(entity);
         }
 
+        public async Task<List<CdbOfertas>> ListarAsync(CdbOfertasFiltro filtro)
+        {
+            var lista = await _repositorio.ListarAsync(filtro);
+            return lista.Adapt<List<CdbOfertas>>();
+        }
+
     }
 }
